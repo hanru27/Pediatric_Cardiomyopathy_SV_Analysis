@@ -1,17 +1,20 @@
 #!/usr/bin/env Rscript
-# Per-sample SV size violin+points plots: raw vs tier1-filtered, and de novo
-# vs inherited. Recreates the 2 combined PNGs in figure_analysis_2/SV/frequency_charts/.
-# Requires: bcftools on PATH, R pkgs data.table/ggplot2/scales/patchwork.
+# Per-sample SV size violin+points plots: raw vs tier1-filtered, and de novo vs inherited
+# Requires: bcftools on PATH
 
 library(data.table)
 library(ggplot2)
 library(scales)
 library(patchwork)
 
-base_dir = "/rds/general/user/rg3825/home/imperial_projects/summer_project/iconik_sv_analysis"
+get_script_dir = function() {
+  file_arg = grep("^--file=", commandArgs(trailingOnly = FALSE), value = TRUE)
+  if (length(file_arg) == 1) dirname(normalizePath(sub("^--file=", "", file_arg))) else getwd()
+}
+base_dir = normalizePath(file.path(get_script_dir(), "..", "..", ".."))
 family_list = file.path(base_dir, "data/trios_all37.txt")
 variants_dir = file.path(base_dir, "results/De_novo_calls")
-out_dir = file.path(base_dir, "figure_analysis_2/SV/frequency_charts")
+out_dir = file.path(base_dir, "docs/sv_violin_distributions")
 cache_dir = file.path(out_dir, "cache")
 dir.create(cache_dir, recursive = TRUE, showWarnings = FALSE)
 
@@ -21,7 +24,7 @@ REF_LINES = c(25000, 50)
 sv_levels = c("DEL", "DUP", "INS")
 families = as.character(fread(family_list, header = FALSE)$V1)
 
-# one row per (site, sample-carrier) - a variant carried by 2 of 3 trio members counts twice
+# one row per (site, sample-carrier) as variant carried by 2 of 3 trio members counts twice
 extract_persample = function(vcf_path, family) {
   raw = system2("bcftools", c("query", "-f", shQuote("%SVTYPE\t%INFO/SVLEN[\t%SAMPLE=%GT]\n"), shQuote(vcf_path)),
                 stdout = TRUE, stderr = FALSE)
@@ -130,4 +133,4 @@ p_denovo = make_violin_points_plot(size_denovo, title_denovo, y_limits, y_breaks
 p_inherited = make_violin_points_plot(size_inherited, title_inherited, y_limits, y_breaks, y_minor_breaks)
 ggsave(file.path(out_dir, "sv_size_violin_points_defaultcolors_denovo_vs_inherited_combined.png"), p_denovo | p_inherited, width = 15, height = 7, dpi = 200)
 
-message("Done. Figures written to: ", out_dir)
+message("Completed Figures written to: ", out_dir)
