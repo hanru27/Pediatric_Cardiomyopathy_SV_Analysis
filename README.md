@@ -60,8 +60,13 @@ This downloads the GRCh38 DRAGEN masked reference (Broad's
 ## Data and results
 
 Not included - this is patient-derived clinical research data. See
-`data/README.md`. Result workbooks and per-family visualisations are
-similarly excluded. The exception is `figures/sv_violin_distributions/` -
-two aggregate, cohort-level SV size distribution plots (raw vs
-tier1-filtered, de novo vs inherited) from `scripts/figure_scripts/violin_plots/sv_size_violin.R`,
-included as example output since they carry no per-patient information.
+`data/README.md`. Per-family result workbooks are excluded. Two exceptions,
+included as example output since they're either aggregate/de-identified or
+already public elsewhere:
+
+- `figures/sv_violin_distributions/` - two aggregate, cohort-level SV size
+  distribution plots (raw vs tier1-filtered, de novo vs inherited) from
+  `scripts/figure_scripts/violin_plots/sv_size_violin.R`.
+- `figures/visualisations/` - three worked-example samplot/IGV candidate
+  figures (TTN, MAP2K2, PABPC1 tandem duplications/deletion), reproduced
+  from the author's dissertation.
