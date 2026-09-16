@@ -62,11 +62,13 @@ This downloads the GRCh38 DRAGEN masked reference (Broad's
 Raw data (CRAMs, pedigree, diagnosis records) is not included - see
 `data/README.md`. Three exceptions are included as example/final output:
 
-- `results/workbooks/` - the 7 final Excel workbooks this pipeline
-  produces (de novo R135, inherited R135, genome-wide/allgenes,
-  cross-family overlap, and 3 proband/sibling comparison workbooks).
-  These carry real per-family sample IDs, genes, and clinical annotations,
-  but no file/server paths.
+- `results/workbooks/` - the AF-filtered final Excel workbooks (benign
+  population-AF removed per `filter_by_benign_af.R`): de novo R135,
+  inherited R135, genome-wide/allgenes, cross-family overlap, and 2
+  proband/sibling comparison workbooks (allgenes, inherited R135 - no
+  AF-filtered R135 de novo sibling comparison exists). These carry real
+  per-family sample IDs, genes, and clinical annotations, but no
+  file/server paths.
 - `figures/sv_violin_distributions/` - two aggregate, cohort-level SV size
   distribution plots (raw vs tier1-filtered, de novo vs inherited) from
   `scripts/figure_scripts/violin_plots/sv_size_violin.R`.
