@@ -59,11 +59,14 @@ This downloads the GRCh38 DRAGEN masked reference (Broad's
 
 ## Data and results
 
-Not included - this is patient-derived clinical research data. See
-`data/README.md`. Per-family result workbooks are excluded. Two exceptions,
-included as example output since they're either aggregate/de-identified or
-already public elsewhere:
+Raw data (CRAMs, pedigree, diagnosis records) is not included - see
+`data/README.md`. Three exceptions are included as example/final output:
 
+- `results/workbooks/` - the 7 final Excel workbooks this pipeline
+  produces (de novo R135, inherited R135, genome-wide/allgenes,
+  cross-family overlap, and 3 proband/sibling comparison workbooks).
+  These carry real per-family sample IDs, genes, and clinical annotations,
+  but no file/server paths.
 - `figures/sv_violin_distributions/` - two aggregate, cohort-level SV size
   distribution plots (raw vs tier1-filtered, de novo vs inherited) from
   `scripts/figure_scripts/violin_plots/sv_size_violin.R`.
