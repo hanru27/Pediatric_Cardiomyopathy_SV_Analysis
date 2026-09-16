@@ -45,18 +45,6 @@ copies (edit the hardcoded paths near the top of each `.sh`):
 - R packages: optparse, readr, dplyr, stringr, openxlsx, data.table,
   ggplot2, scales, patchwork
 
-## Reference
-
-Not vendored here (the fasta + BWA index alone are ~8GB). Run:
-
-```
-scripts/setup_reference.sh
-```
-
-This downloads the GRCh38 DRAGEN masked reference (Broad's
-`Homo_sapiens_assembly38_masked.fasta`, public - no auth needed) and builds
-`.fai`/`.dict`/BWA index into `reference/`.
-
 ## Data and results
 
 Raw data (CRAMs, pedigree, diagnosis records) is not included - see
@@ -74,3 +62,12 @@ Raw data (CRAMs, pedigree, diagnosis records) is not included - see
 - `figures/visualisations/` - three worked-example samplot/IGV candidate
   figures (TTN, MAP2K2, PABPC1 tandem duplications/deletion), reproduced
   from the author's dissertation.
+
+**Figure 4** - candidate funnel through the pipeline's filtering stages:
+
+![Filtering funnel](figures/flowchart/manta_denovo_funnel_flowchart.png)
+
+**Figure 5** - worked example: a 4,508 bp tandem duplication in *TTN*
+identified de novo in family 515 (samplot + IGV):
+
+![TTN de novo duplication, family 515](figures/visualisations/figure5_TTN_dup_family515.png)
