@@ -2,8 +2,8 @@
 #PBS -l walltime=01:00:00
 #PBS -l select=1:ncpus=4:mem=16gb
 #PBS -N manta_workbooks
-#PBS -o /rds/general/user/rg3825/home/imperial_projects/summer_project/iconik_sv_analysis/scripts/SV_script/pbs_logs/
-#PBS -e /rds/general/user/rg3825/home/imperial_projects/summer_project/iconik_sv_analysis/scripts/SV_script/pbs_logs/
+#PBS -o /rds/general/user/rg3825/home/imperial_projects/summer_project/iconik_sv_analysis_public/scripts/SV_script/pbs_logs/
+#PBS -e /rds/general/user/rg3825/home/imperial_projects/summer_project/iconik_sv_analysis_public/scripts/SV_script/pbs_logs/
 
 # Stage 3/4: collect the per-family TSVs the qc stage produced and assemble
 # the final workbooks - one sheet per family/proband in each.
@@ -13,17 +13,20 @@ set -uo pipefail
 eval "$(~/miniforge3/bin/conda shell.bash hook)"
 conda activate Renv
 
-PROJECT=/rds/general/user/rg3825/home/imperial_projects/summer_project/iconik_sv_analysis
+PROJECT=/rds/general/user/rg3825/home/imperial_projects/summer_project/iconik_sv_analysis_public
 SCRIPT_DIR="$PROJECT/scripts/SV_script/workbook_construction"
 
 TRIOS="$PROJECT/data/trios_all37.txt"
 OUTDIR="$PROJECT/results/De_novo_calls"
+WORKBOOKS_DIR="$PROJECT/results/workbooks"
 RSCRIPT=/rds/general/user/rg3825/home/miniforge3/envs/Renv/bin/Rscript
 
-DENOVO_OUT="$OUTDIR/denovo_R135_all_families.xlsx"
-INHERITED_OUT="$OUTDIR/inherited_R135_all_families.xlsx"
-ALLGENES_OUT="$OUTDIR/denovo_allgenes_all_families.xlsx"
-OVERLAP_OUT="$OUTDIR/denovo_overlap_analysis.xlsx"
+mkdir -p "$WORKBOOKS_DIR"
+
+DENOVO_OUT="$WORKBOOKS_DIR/denovo_R135_all_families.xlsx"
+INHERITED_OUT="$WORKBOOKS_DIR/inherited_R135_all_families.xlsx"
+ALLGENES_OUT="$WORKBOOKS_DIR/denovo_allgenes_all_families.xlsx"
+OVERLAP_OUT="$WORKBOOKS_DIR/denovo_overlap_analysis.xlsx"
 
 DENOVO_TSVS=()
 INHERITED_TSVS=()

@@ -9,7 +9,7 @@
 #   Rscript build_proband_sibling_workbook.R \
 #       --proband <357_proband.tsv> <45_proband.tsv> ... \
 #       --sibling <357_sibling.tsv> <45_sibling.tsv> ... \
-#       --out <workbook.xlsx> \
+#       --out results/workbooks/inherited_R135_proband_sibling.xlsx \
 #       [--overlap]
 
 library(optparse)

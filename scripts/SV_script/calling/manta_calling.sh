@@ -2,8 +2,8 @@
 #PBS -l walltime=08:00:00
 #PBS -l select=1:ncpus=8:mem=16gb
 #PBS -N manta_calling
-#PBS -o /rds/general/user/rg3825/home/imperial_projects/summer_project/iconik_sv_analysis/scripts/SV_script/pbs_logs/
-#PBS -e /rds/general/user/rg3825/home/imperial_projects/summer_project/iconik_sv_analysis/scripts/SV_script/pbs_logs/
+#PBS -o /rds/general/user/rg3825/home/imperial_projects/summer_project/iconik_sv_analysis_public/scripts/SV_script/pbs_logs/
+#PBS -e /rds/general/user/rg3825/home/imperial_projects/summer_project/iconik_sv_analysis_public/scripts/SV_script/pbs_logs/
 
 # Stage 1/4: Manta joint SV calling + de novo scoring, per family.
 # Resources are a starting estimate for this stage in isolation - previously
@@ -16,7 +16,7 @@ source /etc/profile.d/modules.sh
 eval "$(~/miniforge3/bin/conda shell.bash hook)"
 conda activate manta_env
 
-PROJECT=/rds/general/user/rg3825/home/imperial_projects/summer_project/iconik_sv_analysis
+PROJECT=/rds/general/user/rg3825/home/imperial_projects/summer_project/iconik_sv_analysis_public
 
 # manta_env's Manta build SIGSEGVs during joint calling for some families -
 # use the 1.6.0 binary (same as the original paper) for calling, conda env

@@ -10,7 +10,7 @@
 # identity (edit-distance based) instead.
 #
 # Usage:
-#   Rscript build_sibling_comparison_report.R --out <report.xlsx> [--overlap] \
+#   Rscript build_sibling_comparison_report.R --out results/workbooks/sibling_comparison.xlsx [--overlap] \
 #       <family1> <proband1.tsv> <sibling1.tsv> [<family2> <proband2.tsv> <sibling2.tsv> ...]
 
 library(optparse)

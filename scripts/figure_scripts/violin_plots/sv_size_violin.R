@@ -14,7 +14,7 @@ get_script_dir = function() {
 base_dir = normalizePath(file.path(get_script_dir(), "..", "..", ".."))
 family_list = file.path(base_dir, "data/trios_all37.txt")
 variants_dir = file.path(base_dir, "results/De_novo_calls")
-out_dir = file.path(base_dir, "docs/sv_violin_distributions")
+out_dir = file.path(base_dir, "figures/sv_violin_distributions")
 cache_dir = file.path(out_dir, "cache")
 dir.create(cache_dir, recursive = TRUE, showWarnings = FALSE)
 

@@ -2,8 +2,8 @@
 #PBS -l walltime=06:00:00
 #PBS -l select=1:ncpus=16:mem=32gb
 #PBS -N manta_qc
-#PBS -o /rds/general/user/rg3825/home/imperial_projects/summer_project/iconik_sv_analysis/scripts/SV_script/pbs_logs/
-#PBS -e /rds/general/user/rg3825/home/imperial_projects/summer_project/iconik_sv_analysis/scripts/SV_script/pbs_logs/
+#PBS -o /rds/general/user/rg3825/home/imperial_projects/summer_project/iconik_sv_analysis_public/scripts/SV_script/pbs_logs/
+#PBS -e /rds/general/user/rg3825/home/imperial_projects/summer_project/iconik_sv_analysis_public/scripts/SV_script/pbs_logs/
 
 # Stage 2/4: tier-1 filtering + de novo/inherited split, then AnnotSV +
 # SpliceAI/GREEN-DB against the R135 panel and genome-wide. Produces
@@ -18,7 +18,7 @@ conda activate manta_env
 module load BCFtools/1.22-GCC-14.2.0
 module load BEDTools/2.31.1-GCC-14.3.0
 
-PROJECT=/rds/general/user/rg3825/home/imperial_projects/summer_project/iconik_sv_analysis
+PROJECT=/rds/general/user/rg3825/home/imperial_projects/summer_project/iconik_sv_analysis_public
 SCRIPT_DIR="$PROJECT/scripts/SV_script/qc"
 
 REF="$PROJECT/reference/Homo_sapiens_assembly38_masked.fasta"

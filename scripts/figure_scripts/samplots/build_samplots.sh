@@ -2,14 +2,14 @@
 #PBS -l walltime=04:00:00
 #PBS -l select=1:ncpus=16:mem=32gb
 #PBS -N manta_samplots
-#PBS -o /rds/general/user/rg3825/home/imperial_projects/summer_project/iconik_sv_analysis/scripts/SV_script/pbs_logs/
-#PBS -e /rds/general/user/rg3825/home/imperial_projects/summer_project/iconik_sv_analysis/scripts/SV_script/pbs_logs/
+#PBS -o /rds/general/user/rg3825/home/imperial_projects/summer_project/iconik_sv_analysis_public/scripts/SV_script/pbs_logs/
+#PBS -e /rds/general/user/rg3825/home/imperial_projects/summer_project/iconik_sv_analysis_public/scripts/SV_script/pbs_logs/
 
 # Stage 4/4: samplot trio images for every R135 green-gene candidate the qc stage produced - one PNG per unique SV, plus a self-contained index.html gallery per family/label.
 
 set -uo pipefail
 
-PROJECT=/rds/general/user/rg3825/home/imperial_projects/summer_project/iconik_sv_analysis
+PROJECT=/rds/general/user/rg3825/home/imperial_projects/summer_project/iconik_sv_analysis_public
 SCRIPT_DIR="$PROJECT/scripts/figure_scripts/samplots"
 
 TRIOS="$PROJECT/data/trios_all37.txt"

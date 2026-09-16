@@ -4,7 +4,7 @@ De novo and inherited structural variant (SV) calling on whole-genome
 sequencing trios, screened against the R135 paediatric cardiomyopathy gene
 panel (PanelApp panel 749).
 
-![Pipeline flowchart](docs/flowchart/manta_denovo_flowchart_colored.png)
+![Pipeline flowchart](figures/flowchart/manta_denovo_flowchart_colored.png)
 
 ## Pipeline
 
@@ -17,8 +17,9 @@ Four stages, run in order:
    AnnotSV + SpliceAI + GREEN-DB annotation against the R135 panel and
    genome-wide.
 3. **`scripts/SV_script/workbook_construction/`** - assembles the per-family
-   TSVs from stage 2 into Excel workbooks (de novo, inherited, genome-wide,
-   cross-family recurrence).
+   TSVs from stage 2 into the final Excel workbooks (de novo, inherited,
+   genome-wide, cross-family recurrence, proband/sibling comparison),
+   written to `results/workbooks/`.
 4. **`scripts/figure_scripts/samplots/`** - samplot trio images and HTML
    galleries for every candidate SV.
 
@@ -60,7 +61,7 @@ This downloads the GRCh38 DRAGEN masked reference (Broad's
 
 Not included - this is patient-derived clinical research data. See
 `data/README.md`. Result workbooks and per-family visualisations are
-similarly excluded. The exception is `docs/sv_violin_distributions/` -
+similarly excluded. The exception is `figures/sv_violin_distributions/` -
 two aggregate, cohort-level SV size distribution plots (raw vs
 tier1-filtered, de novo vs inherited) from `scripts/figure_scripts/violin_plots/sv_size_violin.R`,
 included as example output since they carry no per-patient information.
