@@ -1,0 +1,20 @@
+#!/bin/bash
+#PBS -l walltime=00:30:00
+#PBS -l select=1:ncpus=1:mem=8gb
+#PBS -N overlap_denovo_AF
+#PBS -o /rds/general/user/rg3825/home/imperial_projects/summer_project/iconik_sv_analysis/scripts/SV_script/pbs_logs/
+#PBS -e /rds/general/user/rg3825/home/imperial_projects/summer_project/iconik_sv_analysis/scripts/SV_script/pbs_logs/
+
+set -uo pipefail
+
+source /etc/profile.d/modules.sh
+eval "$(~/miniforge3/bin/conda shell.bash hook)"
+conda activate Renv
+
+PROJECT=/rds/general/user/rg3825/home/imperial_projects/summer_project/iconik_sv_analysis
+SCRIPT="$PROJECT/scripts/SV_script/workbook_construction/find_overlapping_denovo.R"
+OUT="$PROJECT/results/De_novo_calls/general_denovo_anlysis_copy/AF_filtered_copy/denovo_overlap_analysis_AF_filtered.xlsx"
+
+TSVS=("$PROJECT"/results/De_novo_calls/*/results/annotsv/denovo_allgenes_AF_filtered.tsv)
+
+Rscript "$SCRIPT" --out "$OUT" "${TSVS[@]}"

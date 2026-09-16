@@ -1,0 +1,19 @@
+#!/bin/bash
+#PBS -l walltime=00:30:00
+#PBS -l select=1:ncpus=1:mem=8gb
+#PBS -N samplot_overlap_pairs
+#PBS -o /rds/general/user/rg3825/home/imperial_projects/summer_project/iconik_sv_analysis/scripts/SV_script/pbs_logs/
+#PBS -e /rds/general/user/rg3825/home/imperial_projects/summer_project/iconik_sv_analysis/scripts/SV_script/pbs_logs/
+
+set -uo pipefail
+
+PROJECT=/rds/general/user/rg3825/home/imperial_projects/summer_project/iconik_sv_analysis
+SAMPLOT_PYTHON=/rds/general/user/rg3825/home/miniforge3/envs/samplot_env/bin/python3
+SAMPLOT_BIN=/rds/general/user/rg3825/home/miniforge3/envs/samplot_env/bin/samplot
+
+"$SAMPLOT_PYTHON" "$PROJECT/scripts/figure_scripts/samplots/samplot_overlap_pair.py" \
+    --candidates-tsv "$PROJECT/figure_analysis_2/SV/tables/de_novo_genewide_overlap_candidates/genewide_overlap_candidates_loci.tsv" \
+    --trios "$PROJECT/data/trios_all37.txt" \
+    --reference "$PROJECT/reference/Homo_sapiens_assembly38_masked.fasta" \
+    --outdir "$PROJECT/figure_analysis_2/SV/samplot_candidates/denovo_gene_wide_candidates" \
+    --samplot-bin "$SAMPLOT_BIN"

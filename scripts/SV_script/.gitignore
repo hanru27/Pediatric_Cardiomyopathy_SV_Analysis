@@ -1,0 +1,14 @@
+output/
+logs/
+Gene-based/
+.claude/
+*.cram
+*.cram.crai
+*.bam
+*.bam.bai
+*.vcf.gz
+*.vcf.gz.tbi
+*.tsv
+*.csv
+*.xlsx
+*.tar.gz
