@@ -64,9 +64,8 @@ Raw data (CRAMs, pedigree, diagnosis records) is not included - see
 
 - `results/workbooks/` - the AF-filtered final Excel workbooks (benign
   population-AF removed per `filter_by_benign_af.R`): de novo R135,
-  inherited R135, genome-wide/allgenes, cross-family overlap, and 2
-  proband/sibling comparison workbooks (allgenes, inherited R135 - no
-  AF-filtered R135 de novo sibling comparison exists). These carry real
+  inherited R135, genome-wide/allgenes, cross-family overlap, and 1
+  proband/sibling comparison workbook (inherited R135). These carry real
   per-family sample IDs, genes, and clinical annotations, but no
   file/server paths.
 - `figures/sv_violin_distributions/` - two aggregate, cohort-level SV size
